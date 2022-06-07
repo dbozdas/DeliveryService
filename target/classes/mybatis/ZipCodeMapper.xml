@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.IZipCodeDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.address.ZipCode" id = "ZipCodeResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "zip_code" property = "zipCode"/>
+        <association property="city" resultMap  = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.ICityDAO.CityResultMap"/>
+
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into ZipCodes (zip_code)
+        Values (#{zipCode})
+        ]]>
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update ZipCodes
+        Set
+            zip_code=#{zipCode}
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From ZipCodes Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "ZipCodeResultMap">
+        <![CDATA[
+        Select * From ZipCodes
+        Left Join ON cities
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>

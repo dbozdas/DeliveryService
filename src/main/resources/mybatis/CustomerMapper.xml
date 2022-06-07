@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.interfaceDAO.peopleDAO.ICustomerDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.people.Customer" id = "CustomerResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "first_name" property = "firstName"/>
+        <result column = "last_name" property = "lastName"/>
+        <result column = "date_of_birth" property = "dateOfBirth"/>
+        <result column = "email" property = "email"/>
+        <result column = "phone_number" property = "phoneNumber"/>
+        <association property="address" resultMap  = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.IAddressDAO.AddressResultMap"/>
+
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into Customers (first_name, last_name, date_of birth, email, phone_number)
+        Values (#{firstName}, #{lastName}, #{dateOfBirth}, #{email}, #{phoneNumber})
+        ]]>
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update Customers
+        Set
+            first_name=#{firstName},
+            last_name=#{lastName},
+            date_of birth=#{dateOfBirth},
+            email=#{email},
+            phone_number=#{phoneNumber}
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From Customers Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "CustomerResultMap">
+        <![CDATA[
+        Select * From Customers
+        Left Join ON Addresses
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>

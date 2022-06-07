@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.IStateDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.address.State" id = "StateResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "code" property = "code"/>
+        <result column = "name" property = "name"/>
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into States (code, name)
+        Values (#{code}, #{name})
+        ]]>
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update States
+        Set
+            code=#{code},
+            name=#{name}
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From States Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "StatesResultMap">
+        <![CDATA[
+        Select * From States
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>

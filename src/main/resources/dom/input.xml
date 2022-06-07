@@ -1,0 +1,48 @@
+<?xml version = "1.0"?>
+  <customers>
+    <customer id = "1">
+        <firstName>John</firstName>
+        <lastName>Duru</lastName>
+        <dateOfBirth>01/01/1990</dateOfBirth>
+        <email>jduru@gmail.com</email>
+        <phoneNumber>7734928476</phoneNumber>
+        <Address id = "1">
+            <address1>2147 W </address1>
+            <address2>Roscoe Street</address2>
+                <ZipCode id = "67">
+                    <zipCode>60618</zipCode>
+                        <city id = "4">
+                            <name>Chicago</name>
+                                <State id = "23">
+                                    <name>Illinois</name>
+                                    <code>IL</code>
+                                </State>
+                        </city>>
+                </ZipCode>
+        </Address>
+    </customer>
+
+    <customer id = "2">
+        <firstName>John</firstName>
+        <lastName>Duru</lastName>
+        <dateOfBirth>01/01/1990</dateOfBirth>
+        <email>jduru@gmail.com</email>
+        <phoneNumber>7734928476</phoneNumber>
+        <Address id = "2">
+            <address1>2147 W </address1>
+            <address2>Roscoe Street</address2>
+            <ZipCode id = "3">
+                <zipCode>60618</zipCode>
+                <city id = "5">
+                    <name>Chicago </name>
+                    <State id = "20">
+                        <name>NewYork</name>
+                        <code>NY</code>
+                    </State>
+                </city>>
+            </ZipCode>
+        </Address>
+    </customer>
+
+
+</customers>

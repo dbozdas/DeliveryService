@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.IAddressDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.address.Address" id = "AddressResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "street_number" property = "streetNumber"/>
+        <result column = "street_name" property = "streetName"/>
+        <association property="zip_Code" resultMap  = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.IZipCodeDAO.ZipCodeResultMap"/>
+
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into Addresses (street_number, street_name)
+        Values (#{streetNumber}, #{streetName})
+        ]]>
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update Addresses
+        Set
+            street_number=#{streetNumber},
+            street_name=#{streetName}
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From Addresses Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "AddressResultMap">
+        <![CDATA[
+        Select * From Addresses
+        Left Join ON zip_Codes
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>
