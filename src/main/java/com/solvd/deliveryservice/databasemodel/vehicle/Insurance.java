@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Insurance {
     private static final Logger LOGGER = LogManager.getLogger(Insurance.class);
@@ -57,4 +58,6 @@ public class Insurance {
     public void setCoverage(Double coverage) {
         this.coverage = coverage;
     }
+
+
 }
