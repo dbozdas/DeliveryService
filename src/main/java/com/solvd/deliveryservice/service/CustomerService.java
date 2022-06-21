@@ -1,8 +1,8 @@
 package com.solvd.deliveryservice.service;
 
 import com.solvd.deliveryservice.dao.implDAO.peopleDAO.CustomerDAO;
-import com.solvd.deliveryservice.dao.interfaceDAO.orderDAO.IOrderDAO;
-import com.solvd.deliveryservice.dao.interfaceDAO.peopleDAO.ICustomerDAO;
+import com.solvd.deliveryservice.dao.IOrderDAO;
+import com.solvd.deliveryservice.dao.ICustomerDAO;
 import com.solvd.deliveryservice.databasemodel.people.Customer;
 import com.solvd.deliveryservice.dao.implDAO.orderDAO.OrderDAO;
 

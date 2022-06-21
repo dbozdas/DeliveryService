@@ -1,6 +1,5 @@
 package com.solvd.deliveryservice.deadlock;
 
-import com.solvd.deliveryservice.mybatis.MyBatis;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

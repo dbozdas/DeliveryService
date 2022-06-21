@@ -3,11 +3,11 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.ICityDAO">
+<mapper namespace = "com.solvd.deliveryservice.dao.ICityDAO">
     <resultMap type = "com.solvd.deliveryservice.databasemodel.address.City" id = "CityResultMap" autoMapping = "false">
         <id column = "id" property = "id"/>
         <result column = "name" property = "name"/>
-        <association property="state" resultMap  = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.IStateDAO.StateResultMap"/>
+        <association property="state" resultMap  = "com.solvd.deliveryservice.dao.IStateDAO.StateResultMap"/>
 
     </resultMap>
 

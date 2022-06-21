@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "com.solvd.deliveryservice.dao.interfaceDAO.peopleDAO.ICustomerDAO">
+<mapper namespace = "com.solvd.deliveryservice.dao.ICustomerDAO">
     <resultMap type = "com.solvd.deliveryservice.databasemodel.people.Customer" id = "CustomerResultMap" autoMapping = "false">
         <id column = "id" property = "id"/>
         <result column = "first_name" property = "firstName"/>
@@ -11,7 +11,7 @@
         <result column = "date_of_birth" property = "dateOfBirth"/>
         <result column = "email" property = "email"/>
         <result column = "phone_number" property = "phoneNumber"/>
-        <association property="address" resultMap  = "com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.IAddressDAO.AddressResultMap"/>
+        <association property="address" resultMap  = "com.solvd.deliveryservice.dao.IAddressDAO.AddressResultMap"/>
 
     </resultMap>
 

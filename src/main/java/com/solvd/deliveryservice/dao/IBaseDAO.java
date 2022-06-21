@@ -1,4 +1,4 @@
-package com.solvd.deliveryservice.dao.interfaceDAO;
+package com.solvd.deliveryservice.dao;
 
 
 public interface IBaseDAO<T> {

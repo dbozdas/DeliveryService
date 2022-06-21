@@ -2,8 +2,8 @@ package com.solvd.deliveryservice.service;
 
 import com.solvd.deliveryservice.dao.implDAO.orderDAO.OrderDAO;
 import com.solvd.deliveryservice.dao.implDAO.peopleDAO.DriverDAO;
-import com.solvd.deliveryservice.dao.interfaceDAO.orderDAO.IOrderDAO;
-import com.solvd.deliveryservice.dao.interfaceDAO.peopleDAO.IDriverDAO;
+import com.solvd.deliveryservice.dao.IOrderDAO;
+import com.solvd.deliveryservice.dao.IDriverDAO;
 import com.solvd.deliveryservice.databasemodel.people.Driver;
 
 public class DriverService {

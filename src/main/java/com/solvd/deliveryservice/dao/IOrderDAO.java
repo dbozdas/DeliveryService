@@ -1,6 +1,5 @@
-package com.solvd.deliveryservice.dao.interfaceDAO.orderDAO;
+package com.solvd.deliveryservice.dao;
 
-import com.solvd.deliveryservice.dao.interfaceDAO.IBaseDAO;
 import com.solvd.deliveryservice.databasemodel.order.Order;
 
 public interface IOrderDAO extends IBaseDAO<Order> {

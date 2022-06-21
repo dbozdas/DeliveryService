@@ -1,6 +1,6 @@
 package com.solvd.deliveryservice.dao.implDAO.addressDAO;
 
-import com.solvd.deliveryservice.dao.interfaceDAO.addressDAO.IAddressDAO;
+import com.solvd.deliveryservice.dao.IAddressDAO;
 import com.solvd.deliveryservice.databasemodel.address.Address;
 import com.solvd.deliveryservice.databasemodel.address.ZipCode;
 import org.apache.logging.log4j.LogManager;
