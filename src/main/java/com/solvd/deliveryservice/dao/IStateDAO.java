@@ -1,6 +1,7 @@
 package com.solvd.deliveryservice.dao;
 
-import com.solvd.deliveryservice.databasemodel.address.City;
 
-public interface IStateDAO extends IBaseDAO<City> {
+import com.solvd.deliveryservice.databasemodel.address.State;
+
+public interface IStateDAO extends IBaseDAO<State> {
 }

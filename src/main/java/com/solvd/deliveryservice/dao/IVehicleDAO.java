@@ -1,4 +1,6 @@
 package com.solvd.deliveryservice.dao;
 
-public interface IVehicleDAO {
+import com.solvd.deliveryservice.databasemodel.vehicle.Vehicle;
+
+public interface IVehicleDAO extends IBaseDAO<Vehicle> {
 }
