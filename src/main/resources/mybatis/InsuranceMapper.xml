@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.IVehicleDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.vehicle.Insurance" id = "InsuranceResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "eff_date" property = "effDate"/>
+        <result column = "exp_date" property = "expDate"/>
+        <result column = "coverage" property = "coverage"/>
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into Insurances (eff_date, exp_date, coverage)
+        Values (#{effDate}, #{expDate}, #{coverage})
+        ]]>
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update Insurances
+        Set
+            eff_date=#{effDate},
+            exp_date=#{expDate},
+            coverage=#{coverage}
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From Insurances Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "InsuranceResultMap">
+        <![CDATA[
+        Select * From Insurances
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>

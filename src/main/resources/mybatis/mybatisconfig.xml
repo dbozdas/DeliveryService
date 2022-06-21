@@ -23,5 +23,14 @@
         <mapper resource = "mybatis/ZipCodeMapper.xml"/>
         <mapper resource = "mybatis/CityMapper.xml"/>
         <mapper resource = "mybatis/StateMapper.xml"/>
+        <mapper resource = "mybatis/AvailableHourMapper.xml"/>
+        <mapper resource = "mybatis/DriverMapper.xml"/>
+        <mapper resource = "mybatis/MenuItemMapper.xml"/>
+        <mapper resource = "mybatis/OrderMapper.xml"/>
+        <mapper resource = "mybatis/OrderMenuMapper.xml"/>
+        <mapper resource = "mybatis/RestaurantMapper.xml"/>
+        <mapper resource = "mybatis/StatusMapper.xml"/>
+        <mapper resource = "mybatis/vehicleMapper.xml"/>
+        <mapper resource = "mybatis/InsuranceMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.IRestaurantDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.place.Restaurant" id = "RestaurantResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "name" property = "name"/>
+        <result column = "phoneNumber" property = "phoneNumber"/>
+        <result column = "rating" property = "rating"/>
+        <association property="address" resultMap  = "com.solvd.deliveryservice.dao.IAddressDAO.AddressResultMap"/>
+
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into Restaurants (name, phoneNumber, rating)
+        Values (#{name},#{phoneNumber},#{rating})
+        ]]>
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update Restaurants
+        Set
+            name=#{name}
+            phoneNumber=#{phoneNumber},
+            rating=#{rating}
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From Restaurants  Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "RestaurantResultMap">
+        <![CDATA[
+        Select * From Restaurants
+        Left Join ON Addresses
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>

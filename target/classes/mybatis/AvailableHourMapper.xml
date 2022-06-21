@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.IAvailableHourDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.calendar.AvailableHour" id = "AvailableHourResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "shiftStartTime" property = "shiftStartTime"/>
+        <result column = "shiftEndTime" property = "shiftEndTime"/>
+        <association property="driver" resultMap  = "com.solvd.deliveryservice.dao.IDriverDAO.DriverResultMap"/>
+
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into AvailableHours (shiftStartTime, shiftEndTime)
+        Values (#{shiftStartTime}, #{shiftEndTime})
+        ]]>
+
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update AvailableHours
+        Set
+            name=#{name}
+            shiftStartTime=#{shiftStartTime}
+            shiftEndTime=#{shiftEndTime}
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From AvailableHours Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "MenuItemResultMap">
+        <![CDATA[
+        Select * From AvailableHours
+        Left Join ON Drivers
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>

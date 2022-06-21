@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.IVehicleDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.vehicle.Vehicle" id = "VehicleResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "plate_number" property = "plateNumber"/>
+        <result column = "make" property = "make"/>
+        <result column = "model" property = "model"/>
+        <result column = "year" property = "year"/>
+        <result column = "inspection_exp_date" property = "inspectionExpDate"/>
+        <association property="driver" resultMap  = "com.solvd.deliveryservice.dao.IDriverDAO.DriverResultMap"/>
+        <association property="insurance" resultMap  = "com.solvd.deliveryservice.dao.IInsuranceDAO.InsuranceResultMap"/>
+
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into Vehicles (plate_number, make, model, year, inspection_exp_date)
+        Values (#{plateNumber}, #{make}, #{model}, #{year}, #{inspectionExpDate})
+        ]]>
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update Vehicles
+        Set
+            plate_number=#{plateNumber},
+            make=#{make},
+            model=#{model},
+            year=#{year},
+            inspection_exp_date=#{inspectionExpDate},
+
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From Vehicles Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "VehicleResultMap">
+        <![CDATA[
+        Select * From Vehicles
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>

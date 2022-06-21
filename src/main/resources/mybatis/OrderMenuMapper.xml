@@ -3,24 +3,24 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "com.solvd.deliveryservice.dao.ICityDAO">
-    <resultMap type = "com.solvd.deliveryservice.databasemodel.address.City" id = "CityResultMap" autoMapping = "false">
+<mapper namespace = "com.solvd.deliveryservice.dao.IOrderMenuDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.order.OrderMenu" id = "OrderMenuResultMap" autoMapping = "false">
         <id column = "id" property = "id"/>
-        <result column = "name" property = "name"/>
-        <association property="state" resultMap  = "com.solvd.deliveryservice.dao.IStateDAO.StateResultMap"/>
+        <association property="order" resultMap  = "com.solvd.deliveryservice.dao.IOrderDAODAO.OrderResultMap"/>
+        <association property="menuItem" resultMap  = "com.solvd.deliveryservice.dao.IMenuItemDAO.MenuItemResultMap"/>
 
     </resultMap>
 
     <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
         <![CDATA[
-        Insert into Cities (name)
+        Insert into OrderMenus (name)
         Values (#{name})
         ]]>
     </insert>
 
     <update id = "update">
         <![CDATA[
-        Update Cities
+        Update OrderMenus
         Set
             name=#{name}
         Where id =#{id}
@@ -29,14 +29,15 @@
 
     <delete id = "delete">
         <![CDATA[
-        Delete From Cities Where id = #{id}
+        Delete From OrderMenus Where id = #{id}
         ]]>
     </delete>
 
     <select id = "findById" resultMap = "CityResultMap">
         <![CDATA[
-        Select * From Cities
-        Left Join ON States
+        Select * From OrderMenus o
+        Left Join Orders or ON o.orderId=or.id
+        Left Join MenuItems m ON o.menuItemId=m.id
         Where id = #{id}
         ]]>
     </select>

@@ -90,4 +90,17 @@ public class Order {
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", orderDate=" + orderDate +
+                ", specialInst='" + specialInst + '\'' +
+                ", customer=" + customer +
+                ", driver=" + driver +
+                ", status=" + status +
+                ", restaurant=" + restaurant +
+                '}';
+    }
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.solvd.deliveryservice.dao.IOrderDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.order.Order" id = "OrderResultMap" autoMapping = "false">
+        <id column = "id" property = "id"/>
+        <result column = "orderDate" property = "orderDate"/>
+        <result column = "specialInst" property = "specialInst"/>
+        <association property="customer" resultMap  = "com.solvd.deliveryservice.dao.ICustomerDAO.CustomerResultMap"/>
+        <association property="driver" resultMap  = "com.solvd.deliveryservice.dao.IDriverDAO.DriverResultMap"/>
+        <association property="status" resultMap  = "com.solvd.deliveryservice.dao.IStatusDAO.StatusResultMap"/>
+        <association property="restaurant" resultMap  = "com.solvd.deliveryservice.dao.IRestaurantDAO.RestaurantResultMap"/>
+
+    </resultMap>
+
+    <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
+        <![CDATA[
+        Insert into Orders (orderDate,specialInst)
+        Values (#{orderDate}, #{specialInst})
+        ]]>
+    </insert>
+
+    <update id = "update">
+        <![CDATA[
+        Update Orders
+        Set
+            orderDate=#{orderDate}
+            specialInst=#{specialInst}
+        Where id =#{id}
+        ]]>
+    </update>
+
+    <delete id = "delete">
+        <![CDATA[
+        Delete From Orders Where id = #{id}
+        ]]>
+    </delete>
+
+    <select id = "findById" resultMap = "OrderResultMap">
+        <![CDATA[
+        Select * From Orders o
+        Left Join Customers c ON o.customer_id=c.id
+        Left Join Drivers d ON o.driver_id=d.id
+        Left Join Statuses s ON o.status_id=s.id
+        Left Join Restaurants r ON o.restaurant_id=r.id
+        Where id = #{id}
+        ]]>
+    </select>
+
+</mapper>

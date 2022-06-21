@@ -33,7 +33,7 @@
         ]]>
     </delete>
 
-    <select id = "findById" resultMap = "StatesResultMap">
+    <select id = "findById" resultMap = "StateResultMap">
         <![CDATA[
         Select * From States
         Where id = #{id}

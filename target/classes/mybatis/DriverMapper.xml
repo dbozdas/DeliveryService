@@ -3,48 +3,49 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace = "com.solvd.deliveryservice.dao.ICustomerDAO">
-    <resultMap type = "com.solvd.deliveryservice.databasemodel.people.Customer" id = "CustomerResultMap" autoMapping = "false">
+<mapper namespace = "com.solvd.deliveryservice.dao.IDriverDAO">
+    <resultMap type = "com.solvd.deliveryservice.databasemodel.people.Driver" id = "DriverResultMap" autoMapping = "false">
         <id column = "id" property = "id"/>
         <result column = "first_name" property = "firstName"/>
         <result column = "last_name" property = "lastName"/>
         <result column = "date_of_birth" property = "dateOfBirth"/>
         <result column = "email" property = "email"/>
         <result column = "phone_number" property = "phoneNumber"/>
+        <result column = "rating" property = "rating"/>
         <association property="address" resultMap  = "com.solvd.deliveryservice.dao.IAddressDAO.AddressResultMap"/>
 
     </resultMap>
 
     <insert id = "insert" useGeneratedKeys = "true" keyProperty = "id">
         <![CDATA[
-        Insert into Customers (first_name, last_name, date_of birth, email, phone_number)
-        Values (#{firstName}, #{lastName}, #{dateOfBirth}, #{email}, #{phoneNumber})
+        Insert into Drivers (first_name, last_name, date_of birth, email, phone_number, rating)
+        Values (#{firstName}, #{lastName}, #{dateOfBirth}, #{email}, #{phoneNumber}, #{rating})
         ]]>
     </insert>
 
     <update id = "update">
         <![CDATA[
-        Update Customers
+        Update Drivers
         Set
             first_name=#{firstName},
             last_name=#{lastName},
             date_of birth=#{dateOfBirth},
             email=#{email},
-            phone_number=#{phoneNumber}
+            phone_number=#{phoneNumber},
+            rating=#{rating}
         Where id =#{id}
         ]]>
     </update>
 
     <delete id = "delete">
         <![CDATA[
-        Delete From Customers Where id = #{id}
+        Delete From Drivers Where id = #{id}
         ]]>
     </delete>
 
-    <select id = "findById" resultMap = "CustomerResultMap">
+    <select id = "findById" resultMap = "DriverResultMap">
         <![CDATA[
-        Select * From Customers
-        Left Join ON Addresses
+        Select * From Drivers
         Where id = #{id}
         ]]>
     </select>

@@ -5,7 +5,6 @@ import com.solvd.deliveryservice.databasemodel.people.Customer;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import static jdk.internal.net.http.common.Utils.close;
 import static com.solvd.deliveryservice.dao.mybatis.SessionPool.*;
 
 public class MCustomerDAO implements ICustomerDAO {
